@@ -11,7 +11,10 @@ while guesses > 0:
     if len(user_word) != len(random_word):
         print("Invalid length.")
         continue
-
+    if user_word.upper() not in word_list:
+        print("Invalid Word")
+        continue
+    
     updated_word = ['_'] * len(user_word)  # Initialize the updated word with underscores because it's easier
 
     for i in range(len(user_word)):
@@ -31,9 +34,9 @@ while guesses > 0:
 
     if guesses == 0:
         random_word = "\033[95m" + random_word + "\033[0m" #prints in Purple
-        print("Out of guesses. The word was", random_word)
+        print("You lost. The word was", random_word)
         break
 
     # flex goals -- get it to not highlight yellow color if the letter has been used already
-    #  get it to only use valid words i.e. words in the word_list.py 
-    # print a word_pool of the alphabet but update it to colorize letters that you've alrady used
+    #  get it to only use valid words i.e. words in the word_list.py DONE
+    # print a word_pool of the alphabet but update it to colorize letters that you've already used
