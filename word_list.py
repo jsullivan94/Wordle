@@ -9,4 +9,3 @@ FROM word;
 all_words = CURSOR.execute(query).fetchall()
 word_list = [word[0] for word in all_words]
 CONN.close()
-
