@@ -15,9 +15,9 @@ def play():
             
 def main():
     random_word = random.choice(word_list).lower()
-    print("                        Random word:", random_word)
+    # print("                        Random word:", random_word)
     guesses = 6
-
+    used_letters = set()
     while guesses > 0:
         user_word = input("                        Enter a word: ")
         if len(user_word) != len(random_word):
@@ -25,7 +25,7 @@ def main():
             continue
 
         updated_word = ['_'] * len(user_word)  # Initialize the updated word with underscores because it's easier
-
+        
         for i in range(len(user_word)):
             if user_word[i] == random_word[i]:
                 updated_word[i] = '\033[92m' + alph[user_word[i]] + '\033[0m'  # Green color for correct letter in correct position
@@ -33,7 +33,7 @@ def main():
                 updated_word[i] = '\033[93m' + alph[user_word[i]] + '\033[0m'  # Yellow color for correct letter in wrong position
             else:
                 updated_word[i] = '\033[91m' + alph[user_word[i]] + '\033[0m'  # Red for not in the word
-
+                used_letters.add(user_word[i])
         # print(' '.join(updated_word)) #.join combines elements to a string separated by spaces
         for letter in updated_word:
             print(letter) 
@@ -42,19 +42,20 @@ def main():
         
 
         if user_word == random_word:
-            print(r"""
+            print('\033[0;32m'r"""
 
              _  _  _____  __  __    _    _  _____  _  _ /\
             ( \/ )(  _  )(  )(  )  ( \/\/ )(  _  )( \( ))(
              \  /  )(_)(  )(__)(    )    (  )(_)(  )  ( \/
              (__) (_____)(______)  (__/\__)(_____)(_)\_)()
                     
-                                                                                            """)
+                                                                                            """'\033[0m')
             play() 
             break
 
         guesses -= 1
         print("                        Remaining guesses:", guesses)
+        print("                        Wrong letters:", used_letters    )
 
         if guesses == 0:
             random_word = "\033[95m" + random_word + "\033[0m" #prints in Purple
