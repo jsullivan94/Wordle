@@ -5,6 +5,7 @@ import sqlite3
 
 globalUsername = None
 signedIn = False
+globalStreak = None
 
 def Update_streak():
     #print("I was called")
@@ -18,6 +19,24 @@ def Update_streak():
     WHERE username = ?;
     """,(globalUsername,))
     sheesh.commit()
+    sheeshcursor.close()
+    sheesh.close()
+
+def call_streak():
+    #print("call streak was called")
+    global globalUsername
+    global globalStreak
+    #print(f' {globalUsername} your streak has increased !')
+    sheesh = sqlite3.connect('words.db')
+    sheeshcursor = sheesh.cursor()
+
+    sheeshcursor.execute("""
+    SELECT streak FROM users WHERE username = ?;
+    """, (globalUsername,))
+
+    globalStreak = sheeshcursor.fetchone()
+    globalStreak = globalStreak[0] if globalStreak else None
+  
     sheeshcursor.close()
     sheesh.close()
 

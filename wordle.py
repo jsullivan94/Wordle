@@ -58,6 +58,8 @@ def main():
             #print(f"right now user SignIn is : {user.signedIn}") 
             if user.signedIn == True:
                 user.Update_streak()
+                user.call_streak()
+                print(f'Your streak is now! {user.globalStreak}')
             else:
                 pass
             
