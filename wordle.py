@@ -3,9 +3,14 @@ import random
 from word_list import word_list
 from asciialph import alph
 import time
+import user 
+
+
+
 
 wordle_animation()
 
+user.Sign_In()
 def play():
         play_again = input("                  Do you want to play a game?: y/n ")
         if play_again == "y":
@@ -50,6 +55,11 @@ def main():
              (__) (_____)(______)  (__/\__)(_____)(_)\_)()
                     
                                                                                             """)
+            if user.signedIn == True:
+                user.update_streak()
+            else:
+                pass
+            
             play() 
             break
 
