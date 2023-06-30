@@ -9,7 +9,7 @@ signedIn = False
 def Update_streak():
     #print("I was called")
     global globalUsername
-    print(f'Username" {globalUsername} your streak has increased !')
+    print(f' {globalUsername} your streak has increased !')
     sheesh = sqlite3.connect('words.db')
     sheeshcursor = sheesh.cursor()
 
