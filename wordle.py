@@ -20,6 +20,7 @@ def play():
             
 def main():
     random_word = random.choice(word_list).lower()
+    used_letters = set()
     print("                        Random word:", random_word)
     guesses = 6
 
@@ -38,7 +39,9 @@ def main():
                 updated_word[i] = '\033[93m' + alph[user_word[i]] + '\033[0m'  # Yellow color for correct letter in wrong position
             else:
                 updated_word[i] = '\033[91m' + alph[user_word[i]] + '\033[0m'  # Red for not in the word
+                used_letters.add(user_word[i])
 
+        print(f"")
         # print(' '.join(updated_word)) #.join combines elements to a string separated by spaces
         for letter in updated_word:
             print(letter) 
@@ -68,7 +71,7 @@ def main():
 
         guesses -= 1
         print("                        Remaining guesses:", guesses)
-
+        print("             Wrong Letters:", used_letters)
         if guesses == 0:
             random_word = "\033[95m" + random_word + "\033[0m" #prints in Purple
             print("                 Out of guesses. The word was", random_word)
