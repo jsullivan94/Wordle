@@ -9,12 +9,27 @@ signedIn = False
 def Update_streak():
     #print("I was called")
     global globalUsername
-    print(f'Username" {globalUsername} your streak was updated!')
+    print(f'Username" {globalUsername} your streak has increased !')
     sheesh = sqlite3.connect('words.db')
     sheeshcursor = sheesh.cursor()
 
     sheeshcursor.execute("""
     UPDATE users SET streak = streak + 1
+    WHERE username = ?;
+    """,(globalUsername,))
+    sheesh.commit()
+    sheeshcursor.close()
+    sheesh.close()
+
+def decrement_streak():
+    #print("I was called")
+    global globalUsername
+    print(f'{globalUsername} your streak was broken!')
+    sheesh = sqlite3.connect('words.db')
+    sheeshcursor = sheesh.cursor()
+
+    sheeshcursor.execute("""
+    UPDATE users SET streak = 0
     WHERE username = ?;
     """,(globalUsername,))
     sheesh.commit()
