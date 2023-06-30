@@ -6,9 +6,10 @@ import sqlite3
 globalUsername = None
 signedIn = False
 
-def update_streak():
+def Update_streak():
+    #print("I was called")
     global globalUsername
-    print(f'this is global username {globalUsername}')
+    print(f'Username" {globalUsername} your streak was updated!')
     sheesh = sqlite3.connect('words.db')
     sheeshcursor = sheesh.cursor()
 
@@ -39,6 +40,7 @@ def Sign_In():
 
     if passResult:
         print("Login successful!")
+        global signedIn
         signedIn = True
 
     else:

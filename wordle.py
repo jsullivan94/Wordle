@@ -54,9 +54,10 @@ def main():
              \  /  )(_)(  )(__)(    )    (  )(_)(  )  ( \/
              (__) (_____)(______)  (__/\__)(_____)(_)\_)()
                     
-                                                                                            """)
+                                                                                            """) 
+            print(f"right now user SignIn is : {user.signedIn}") 
             if user.signedIn == True:
-                user.update_streak()
+                user.Update_streak()
             else:
                 pass
             
