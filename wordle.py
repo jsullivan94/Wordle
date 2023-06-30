@@ -54,9 +54,10 @@ def main():
              \  /  )(_)(  )(__)(    )    (  )(_)(  )  ( \/
              (__) (_____)(______)  (__/\__)(_____)(_)\_)()
                     
-                                                                                            """)
+                                                                                            """) 
+            #print(f"right now user SignIn is : {user.signedIn}") 
             if user.signedIn == True:
-                user.update_streak()
+                user.Update_streak()
             else:
                 pass
             
@@ -69,6 +70,10 @@ def main():
         if guesses == 0:
             random_word = "\033[95m" + random_word + "\033[0m" #prints in Purple
             print("                 Out of guesses. The word was", random_word)
+            if user.signedIn == True:
+                user.decrement_streak()
+            else:
+                pass
             play() 
             break
 
