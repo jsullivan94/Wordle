@@ -1,7 +1,6 @@
 import os
 import time
 
-
 wordle_ascii =""" 
                            Let's Play
 
@@ -19,7 +18,7 @@ def wordle_animation():
     YELLOW='\033[0;33m'
     BLUE='\033[0;34m'
     PURPLE='\033[0;35m'
-    NC='\033[0m' # No Color
+    NC='\033[0m' 
       
     while True:
         os.system('clear')

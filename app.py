@@ -1,18 +1,22 @@
-from ascii import wordle_animation
+from ascii_wordle import wordle_animation
 import random 
 from word_list import word_list
-from asciialph import alph
+from ascii_alph import alph
 import time
+import user
 
 wordle_animation()
-
-def play():
-        play_again = input("                  Do you want to play a game?: y/n ")
-        if play_again == "y":
-            main()
-        else:
-            exit()
-            
+def sign_up_in():
+    sign_up_or_in = input("        Signup or Login or play?: signup/login/play ")
+    if sign_up_or_in == "login":
+        user.Sign_In()
+        main()
+    elif sign_up_or_in == "signup":
+        user.Sign_up()
+        main()
+    else:
+        main()
+       
 def main():
     random_word = random.choice(word_list).lower()
     # print("                        Random word:", random_word)
@@ -24,22 +28,19 @@ def main():
             print("                        Invalid length")
             continue
 
-        updated_word = ['_'] * len(user_word)  # Initialize the updated word with underscores because it's easier
+        updated_word = ['_'] * len(user_word) 
         
         for i in range(len(user_word)):
             if user_word[i] == random_word[i]:
-                updated_word[i] = '\033[92m' + alph[user_word[i]] + '\033[0m'  # Green color for correct letter in correct position
+                updated_word[i] = '\033[92m' + alph[user_word[i]] + '\033[0m'  
             elif user_word[i] in random_word:
-                updated_word[i] = '\033[93m' + alph[user_word[i]] + '\033[0m'  # Yellow color for correct letter in wrong position
+                updated_word[i] = '\033[93m' + alph[user_word[i]] + '\033[0m'  
             else:
-                updated_word[i] = '\033[91m' + alph[user_word[i]] + '\033[0m'  # Red for not in the word
+                updated_word[i] = '\033[91m' + alph[user_word[i]] + '\033[0m' 
                 used_letters.add(user_word[i])
-        # print(' '.join(updated_word)) #.join combines elements to a string separated by spaces
         for letter in updated_word:
             print(letter) 
             time.sleep(.25)
-
-        
 
         if user_word == random_word:
             print('\033[0;32m'r"""
@@ -49,8 +50,16 @@ def main():
              \  /  )(_)(  )(__)(    )    (  )(_)(  )  ( \/
              (__) (_____)(______)  (__/\__)(_____)(_)\_)()
                     
-                                                                                            """'\033[0m')
-            play() 
+            
+                                                                                           
+          
+                             """'\033[0m') 
+            if user.signedIn == True:
+                user.Update_streak()
+                user.call_streak()
+            else:
+                pass
+            main() 
             break
 
         guesses -= 1
@@ -58,15 +67,13 @@ def main():
         print("                        Wrong letters:", used_letters    )
 
         if guesses == 0:
-            random_word = "\033[95m" + random_word + "\033[0m" #prints in Purple
+            user.decrement_streak()
+            random_word = "\033[95m" + random_word + "\033[0m" 
             print("                 Out of guesses. The word was", random_word)
-            play() 
+            main() 
             break
 
-
-        
-play()
-    
-
-    # flex goals -- get it to not highlight yellow color if the letter has been used already
-    #  get it to only use valid words i.e. words in the word_list.py 
+if user.globalUsername == None:     
+    sign_up_in()
+else:
+    main()
