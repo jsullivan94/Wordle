@@ -1,7 +1,7 @@
 # Wordle Command Line Game
 Recreate the popular game "Wordle" with a command-line twist! Built using Python and SQLite, this game allows users to play Wordle right from their terminal, with the added feature of tracking streaks for returning players.
 
-![Wordle](Screenshot 2023-10-17 192119.png)
+![Wordle](/home/jsullivan/Development/code/phase-3/Wordle/Screenshot 2023-10-17 192119.png)
 
 ## Features
 - **Command Line Interface:** No GUI? No problem! Play Wordl just like you would in a command-line environment.
