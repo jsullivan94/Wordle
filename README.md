@@ -15,11 +15,11 @@ Recreate the popular game "Wordle" with a command-line twist! Built using Python
 ### Clone the repository:
 **Using HTTPS:** 
 ```
-git clone git@github.com:jsullivan94/Wordle.git
+git clone https://github.com/jsullivan94/wordle.git
 ```
 **Using SSH:**
 ``` 
-git clone https://github.com/jsullivan94/Wordle.git
+git clone git@github.com:jsullivan94/wordle.git
 ```
 ### Navigate to the project directory:
 ```
