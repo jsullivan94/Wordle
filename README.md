@@ -23,7 +23,7 @@ git clone git@github.com:jsullivan94/wordle.git
 ```
 ### Navigate to the project directory:
 ```
-cd Wordle
+cd wordle
 ```
 ## Start the game
 ```
